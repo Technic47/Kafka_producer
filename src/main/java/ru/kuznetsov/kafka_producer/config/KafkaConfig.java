@@ -15,6 +15,9 @@ import org.springframework.kafka.core.ProducerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
+import static ru.kuznetsov.kafka_producer.config.TopicNames.GENERATOR_TOPIC_NAME;
+import static ru.kuznetsov.kafka_producer.config.TopicNames.MESSAGE_TOPIC_NAME;
+
 @Configuration
 public class KafkaConfig {
     @Value(value = "${spring.kafka.bootstrap-servers}")
@@ -28,8 +31,13 @@ public class KafkaConfig {
     }
 
     @Bean
-    public NewTopic topic1() {
-        return new NewTopic("baeldung", 1, (short) 1);
+    public NewTopic topicMessages() {
+        return new NewTopic(MESSAGE_TOPIC_NAME, 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic topicGenerator() {
+        return new NewTopic(GENERATOR_TOPIC_NAME, 1, (short) 1);
     }
 
     //ProducerConfig

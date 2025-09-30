@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  producer:
+    build:
+      context: .
+    container_name: producer_app_V1.0
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      kafkaUrl: host.docker.internal:9092
+#    deploy:
+#      mode: replicated
+#      replicas: 2
+    networks:
+      kafka-network:
+
+networks:
+  kafka-network:
+
