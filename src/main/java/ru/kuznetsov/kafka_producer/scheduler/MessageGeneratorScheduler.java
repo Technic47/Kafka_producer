@@ -5,16 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.kuznetsov.kafka_producer.service.KafkaService;
-
-import java.util.Random;
+import ru.kuznetsov.kafka_producer.service.GeneratorService;
 
 @Component
 @RequiredArgsConstructor
 public class MessageGeneratorScheduler {
 
-    private final KafkaService kafkaService;
-    private final Random random = new Random();
+    private final GeneratorService generatorService;
 
     Logger logger = LoggerFactory.getLogger(MessageGeneratorScheduler.class);
 
@@ -22,8 +19,7 @@ public class MessageGeneratorScheduler {
     public void scheduleMessageGenerator() {
         logger.info("Starting scheduled message generator");
 
-        int number = random.nextInt(100);
-        kafkaService.sendGeneratorAmount(number);
+        int number = generatorService.sendGeneratorRandomAmount();
         logger.info("Send to Generator amount: {}", number);
 
         logger.info("Finishing scheduled message generator");

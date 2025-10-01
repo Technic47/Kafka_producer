@@ -12,7 +12,7 @@ RUN ./mvnw clean package spring-boot:repackage
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-COPY --from=builder /app/target/Kafka_producer-1.0.0.jar /app/app.jar
+COPY --from=builder /app/target/Kafka_producer.jar /app/app.jar
 
 EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

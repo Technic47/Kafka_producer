@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ru.kuznetsov</groupId>
 	<artifactId>Kafka_producer</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>Kafka_producer</name>
 	<description>Kafka_producer</description>
 
@@ -54,6 +54,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+        <finalName>Kafka_producer</finalName>
 	</build>
 
 </project>
